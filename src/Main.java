@@ -7,43 +7,43 @@ public class Main {
 
         StringBuilder str = new StringBuilder();
 
-        // Р’ РїР°РїРєРµ Games СЃРѕР·РґР°Р№С‚Рµ РЅРµСЃРєРѕР»СЊРєРѕ РґРёСЂРµРєС‚РѕСЂРёР№: src, res, savegames, temp.
+        // В папке Games создайте несколько директорий: src, res, savegames, temp.
 
-        File dirSrc = new File("Games/src");
+        File dirSrc = new File("D://Games/src");
         if (dirSrc.mkdir()) {
             log(dirSrc, str);
         }
 
-        File dirRes = new File("Games/res");
+        File dirRes = new File("D://Games/res");
         if (dirRes.mkdir()) {
             log(dirRes, str);
         }
 
-        File dirSaveGames = new File("Games/savegames");
+        File dirSaveGames = new File("D://Games/savegames");
         if (dirSaveGames.mkdir()) {
             log(dirSaveGames, str);
         }
 
-        File dirTemp = new File("Games/temp");
+        File dirTemp = new File("D://Games/temp");
         if (dirTemp.mkdir()) {
             log(dirTemp, str);
         }
 
-        //Р’ РєР°С‚Р°Р»РѕРіРµ src СЃРѕР·РґР°Р№С‚Рµ РґРІРµ РґРёСЂРµРєС‚РѕСЂРёРё: main, test.
+        //В каталоге src создайте две директории: main, test.
 
-        File dirSrcMain = new File("Games/src/main");
+        File dirSrcMain = new File("D://Games/src/main");
         if (dirSrcMain.mkdir()) {
             log(dirSrcMain, str);
         }
 
-        File dirSrcTest = new File("Games/src/test");
+        File dirSrcTest = new File("D://Games/src/test");
         if (dirSrcTest.mkdir()) {
             log(dirSrcTest, str);
         }
 
-        //Р’ РїРѕРґРєР°С‚Р°Р»РѕРіРµ main СЃРѕР·РґР°Р№С‚Рµ РґРІР° С„Р°Р№Р»Р°: Main.java, Utils.java.
+        //В подкаталоге main создайте два файла: Main.java, Utils.java.
 
-        File fileMain = new File("Games/src/main/Main.java");
+        File fileMain = new File("D://Games/src/main/Main.java");
         try {
             if (fileMain.createNewFile()) {
                 log(fileMain, str);
@@ -52,7 +52,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        File fileUtils = new File("Games/src/main/Utils.java");
+        File fileUtils = new File("D://Games/src/main/Utils.java");
         try {
             if (fileUtils.createNewFile()) {
                 log(fileUtils, str);
@@ -61,26 +61,26 @@ public class Main {
             e.printStackTrace();
         }
 
-        //Р’ РєР°С‚Р°Р»РѕРі res СЃРѕР·РґР°Р№С‚Рµ С‚СЂРё РґРёСЂРµРєС‚РѕСЂРёРё: drawables, vectors, icons.
+        //В каталог res создайте три директории: drawables, vectors, icons.
 
-        File dirResDrawables = new File("Games/res/drawables");
+        File dirResDrawables = new File("D://Games/res/drawables");
         if (dirResDrawables.mkdir()) {
             log(dirResDrawables, str);
         }
 
-        File dirResVectors = new File("Games/res/vectors");
+        File dirResVectors = new File("D://Games/res/vectors");
         if (dirResVectors.mkdir()) {
             log(dirResVectors, str);
         }
 
-        File dirResIcons = new File("Games/res/icons");
+        File dirResIcons = new File("D://Games/res/icons");
         if (dirResIcons.mkdir()) {
             log(dirResIcons, str);
         }
 
-        //Р’ РґРёСЂРµРєС‚РѕСЂРёРё temp СЃРѕР·РґР°Р№С‚Рµ С„Р°Р№Р» temp.txt.
+        //В директории temp создайте файл temp.txt.
 
-        File fileTemp = new File("Games/temp/temp.txt");
+        File fileTemp = new File("D://Games/temp/temp.txt");
         try {
             if (fileTemp.createNewFile()) {
                 log(fileTemp, str);
@@ -89,8 +89,8 @@ public class Main {
             e.printStackTrace();
         }
 
-        // Р—Р°РїРёСЃС‹РІР°РµРј СЃРѕРґРµСЂР¶РёРјРѕРµ StringBuilder РІ С‚РµРєСЃС‚РѕРІС‹Р№ С„Р°Р№Р»
-        try (FileWriter writer = new FileWriter("Games/temp/temp.txt", true)) {
+        // Записываем содержимое StringBuilder в текстовый файл
+        try (FileWriter writer = new FileWriter("D://Games/temp/temp.txt", true)) {
             writer.write(String.valueOf(str));
             writer.flush();
         } catch (IOException exception) {
@@ -98,14 +98,14 @@ public class Main {
         }
     }
 
-    // С„СѓРЅРєС†РёСЏ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РЅРѕРІРѕРіРѕ С‚РµРєСЃС‚Р° РІ StringBuilder
+    // функция для добавления нового текста в StringBuilder
     public static void log(File file, StringBuilder str) throws IOException {
         if (file.isDirectory()) {
-            str.append("РЎРѕР·РґР°РЅ РєР°С‚Р°Р»РѕРі ").append(file.getCanonicalPath()).append("\n");
-            System.out.println("РЎРѕР·РґР°РЅ РєР°С‚Р°Р»РѕРі " + file.getCanonicalPath());
+            str.append("Создан каталог ").append(file.getCanonicalPath()).append("\n");
+            System.out.println("Создан каталог " + file.getCanonicalPath());
         } else {
-            str.append("РЎРѕР·РґР°РЅ С„Р°Р№Р» ").append(file.getCanonicalPath()).append("\n");
-            System.out.println("РЎРѕР·РґР°РЅ С„Р°Р№Р» " + file.getCanonicalPath());
+            str.append("Создан файл ").append(file.getCanonicalPath()).append("\n");
+            System.out.println("Создан файл " + file.getCanonicalPath());
         }
     }
 }
